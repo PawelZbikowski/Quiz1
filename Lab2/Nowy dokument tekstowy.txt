@@ -1,0 +1,24 @@
+import java.io.*;
+
+class Scratch {
+    public static void main(String[] args) {
+
+        File file = new File("F:\\Lab2\\demoTekst.txt");
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file)); //potencjalnie niebezpieczna instrukcja -
+            // np. ktos wyciagnie pendrive z plikiem tekstowym i juz nie bedzie do niego dostepu
+            System.out.println("Plik ok");
+            String s;
+
+            while ((s = bufferedReader.readLine()) != null){
+                System.out.println(s);
+            }
+
+        } catch (FileNotFoundException e) { //catch dla FileReader
+            System.out.println("Nie mog³em otworzyæ pliku");
+            e.printStackTrace();
+        } catch (IOException e) { //catch dla readLine()
+            e.printStackTrace();
+        }
+    }
+}
